@@ -1,0 +1,10 @@
+Python List
+* List is a DS
+* Python List grows and shrinks dynamically
+* Pyhton List is an Object
+* List can hold same type of Values or different Types
+* List is mutable 
+* List can have list as its elements (Multi dimentional)
+* List index starts from Zero
+* The append() inserts an element to the list at the end
+* Insert() takes 2 args, 1st is the index at which new element to be inserted, 2nd arg is the element
