@@ -1,0 +1,72 @@
+String Programs:
+
+place = 'bengaluru'
+
+print(place)
+print(place[0])
+print(place[8])
+print(place[10])
+---------------------
+place = 'bengaluru'
+
+print(place.upper())
+place.lower()
+print(place)
+place2 = place.upper()
+print(place)
+print(place2)
+---------------------------
+place = 'bengaluru'
+
+print(place.capitalize())
+print(place.startswith('B'))
+print(place.startswith('g', 3))
+print(place.startswith('n', 3, 7))
+print(place.startswith())
+----------------------------
+Negative Indexing
+place = 'bengaluru'
+
+print(place[-1])
+print(place[-9])
+# print(place[-11]) # IndexError
+--------------------------
+# Slicing
+
+place = 'bengaluru'
+
+place2 = place[:]
+print(place2)
+
+place2 = place[::]
+print(place2)
+
+place2 = place[:5]
+print(place2)
+
+place2 = place[5:]
+print(place2)
+-----------------------
+place = 'bengaluru'
+print(place[1:9])
+print(place[1:19])
+print(place[-2:9])
+print(place[1:9:2])
+print(place[10:1:-2])
+print(place[-2:1:-2])
+print(place[-1::-1])
+print(place[::-1])
+--------------------------
+find method()
+
+place = 'shivamogga'
+
+print(place.index('shiva')) # 0
+print(place.index('mogga')) # 5
+print(place.index('mogga', 2)) # 5
+#print(place.index('mogga', 2, 7)) # -1
+print(place.index('mogga', 4, 10)) # 5
+#print(place.index('mogga', 4, 9)) # -1
+#print(place.index('kerala', 0, 10)) # -1
+
+print(place * 3)

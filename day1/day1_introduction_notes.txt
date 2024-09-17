@@ -41,12 +41,10 @@ Here are some key characteristics of Pythonic code:
 
    squares = [x**2 for x in range(10)]
 
-
 3. EFFICACY AND SIMPLICITY: Pythonic code tends to be concise and avoids unnecessary complexity. For example, using `enumerate` instead of manually keeping track of indices in a loop:
 
    for index, value in enumerate(my_list):
       print(index, value)
-
 
 4. DUCK TYPING: Pythonic code often embraces duck typing, meaning it focuses on what an object can do (its methods and behaviors) rather than its specific type. This allows for more flexible and reusable code.
 
@@ -267,9 +265,23 @@ if num1 < num2:
 else:
     print('Num2 = ' + str(num2) + ' is smallest')
 --------------
-
-	
-	
+Now follow these steps to create a new Repo:
+	Login to your github account
+	Click on + (right top corner)
+	Click Create New Repository
+	Give name to your new Repo: "python_sep2024"
+	Make it public Repo (by default it will be public)
+	Click the Checkbox "add readme file"
+	Click Create button
 -----------------------------------------------------------------
-
-
+Now follow these steps to create a new Personal Access Token(PAT)
+	Click on your profile Photo (Right Top corner) -> next page
+	Click Settings (Down in the list) -> next page
+	Sroll down and Click Developer Settings -> next page
+	Click PAT -> Click Tokens classic -> next page
+	Click Generate Token -> Select Classic PAT
+	Expiry -> Select No Expiry
+	Scroll Down -> Click Generate Token
+	Add NOTE relevant to the moment or the training that is going on
+	Copy the PAT and mail it to yourself so that it is permanently saved!
+	
