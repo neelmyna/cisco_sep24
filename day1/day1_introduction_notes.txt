@@ -261,7 +261,7 @@ num1 = int(input())
 num2 = int(input('Enter the second number: '))
 
 if num1 < num2:
-    print('Num1 = ', num1, ' is smallest')
+    print('Num1 =', num1, ' is smallest')
 else:
     print('Num2 = ' + str(num2) + ' is smallest')
 --------------
@@ -284,4 +284,85 @@ Now follow these steps to create a new Personal Access Token(PAT)
 	Scroll Down -> Click Generate Token
 	Add NOTE relevant to the moment or the training that is going on
 	Copy the PAT and mail it to yourself so that it is permanently saved!
-	
+-----------------------------------------------------------
+range(10)
+range(1, 20)
+range(20, 50, 2)
+range(20, 10, -2)
+
+for i in range(30, 10, -2):
+	print(i) # 30 28 26
+	i -= 2
+
+NOTE: the variable 'i' stores the return value of range() and which is a copy. Thus any modification done to 'i' has no effect on the value maintained by range()
+-------------------------------
+import pdb
+
+pdb.set_trace()
+
+input_number = int(input('Enter a number to find 2nd smallest digit in it: '))
+
+smallest_digit = 9
+second_smallest_digit = 9
+temp_number = input_number
+
+while temp_number != 0:
+    remainder_digit = temp_number % 10
+    temp_number = temp_number // 10
+    if remainder_digit < smallest_digit:
+        second_smallest_digit = smallest_digit
+        smallest_digit = remainder_digit
+    elif remainder_digit < second_smallest_digit:
+        second_smallest_digit = remainder_digit
+
+print(f'Second smallest digit in {input_number} is {second_smallest_digit}')
+'''
+i=1
+n=451
+r=1
+n=45
+sd=1
+ssd=9
+
+i=2
+n=45
+r=5
+n=4
+sd=1
+ssd=5
+
+i=3
+n=4
+r=4
+n=0
+sd=1
+ssd=4
+
+i=4
+Loop breaks
+'''
+-------------------------------
+Learn to Debug the CODE using pdb
+
+Command to run the program in debug mode:
+
+python -m pdb program.py
+-----------------
+Code that can invoke the pdb (execute in debug mode)
+
+import pdb
+pdb.set_trace()
+
+-------------------------
+String class:
+place = 'vijayapura'
+
+print(max(place))
+print(min(place))
+print(len(place))
+print(type(place))
+print(dir())
+print(__file__)
+print(__package__)
+print(__doc__)
+------------------------------
