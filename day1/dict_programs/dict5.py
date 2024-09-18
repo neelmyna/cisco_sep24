@@ -7,7 +7,7 @@ my_dict = {3: 'apple', 2: 'apple', 1:'Mango'}
 
 my_dict[1] = 'Pineapple' # to change the value of a key in a dictionary
 print(my_dict)
-del(my_dict[1])  # to delete a value in a dictionary
+del my_dict[1]  # to delete a value in a dictionary
 
 print(my_dict)
 
@@ -23,18 +23,8 @@ my_dict1 = dict([(1,'apple'), (2,'ball')])
 print(my_dict1)
 
 """
-C/C++
-msdn
-docs.microsoft.com
-
-Java
-docs.oracle.com
-
-Python
-python.org
-
-List (vector and list of C++)
-Implicitly it is like Dynamic Array
+List (vector of C++ and ARaayList of Java)
+It is Dynamic Array
 Random Acces is pissible
 Sortable
 dynamically grows and shrinks

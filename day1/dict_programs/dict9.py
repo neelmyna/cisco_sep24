@@ -1,10 +1,13 @@
 def f1():
     print("From the function 1")
     #return "Outstanding20"
+
 def f2():
     print("From the function 2")
-    return "MITT"
+    return "cisco"
+
 var = 500
+
 dict1 = {
         0: f1,
         1: f2,
@@ -20,6 +23,7 @@ dict1 = {
         10: "October",
         11: "November"      
 }
-print("Start of Program")
-print(dict1.get(0,"Invalid Month"))
-print(dict1.get(0,"Invalid Month"))
+print(dict1.get(0,"Invalid Month")())
+print(dict1.get(1,"Invalid Month")())
+print(dict1.get(11,"Invalid Month"))
+print(dict1.get(21,"Invalid Month"))
