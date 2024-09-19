@@ -112,3 +112,49 @@ with open('sweets.txt', 'r') as fptr:
     print(line_list)
     print(line_tuple)
 -------------------------------------------------
+import json
+
+class Sweet:
+    def __init__(self):
+        self.sweets = []
+
+    def read_sweets(self):
+        self.sweets = input('Enter few sweets(space seperated): ').split()
+
+    def __str__(self):
+        return f'The Tasty Sweets are: {self.sweets}'
+    
+    def write_sweets_to_file(self):
+        with open('sweets1.json', 'w') as fptr:
+            json.dump(self.sweets, fptr)
+        print('List of sweets are written to file')
+
+    def read_sweets_from_file(self):
+        with open('sweets1.json', 'r') as fptr:
+            sweets = json.load(fptr)
+        print(f'JSON read from file is: {sweets}')
+
+sweet_obj = Sweet()
+sweet_obj.read_sweets()
+sweet_obj.write_sweets_to_file()
+sweet_obj.read_sweets_from_file()
+--------------------------------------------------
+my_function = lambda num: num*2
+
+print(my_function(45))
+-----------------------------------------
+from functools import reduce
+
+numbers = [2, 3, 5, 7, 11, 19, 17, 13]
+
+squared_numbers = list(map(lambda num: num**2, numbers))
+
+small_numbers = list(filter(lambda num: num < 10, numbers))
+
+numbers_sum = reduce(lambda s, num: s + num, numbers, 0)
+
+print(f'Squared Numbers = {squared_numbers}')
+print(f'Single Digit Numbers = {small_numbers}')
+print(f'Sum of Numbers = {numbers_sum}')
+------------------------------------------
+https://tinyurl.com/cisco-test1

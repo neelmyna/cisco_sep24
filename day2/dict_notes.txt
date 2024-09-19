@@ -128,7 +128,7 @@ from collections import defaultdict
 # Initialize defaultdict with int, which defaults to 0
 d = defaultdict(int)
 
-d['a'] += 1
+d['a'] += 1 # d['a'] = d['a'] + 1
 d['b'] += 2
 
 print(d)  # Output: defaultdict(<class 'int'>, {'a': 1, 'b': 2})
