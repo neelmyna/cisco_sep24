@@ -2,7 +2,7 @@ import sys
 import sqlite3
 
 class Flight:
-    def __init__(self, id, airline, source, destination, duration, fare) -> None:
+    def __init__(self, id=None, airline='', source='', destination='', duration=0.0, fare=0) -> None:
         self.id = id
         self.airline = airline
         self.source = source
@@ -34,26 +34,32 @@ def read_flight_details():
     fare = float(input('Enter Fare in INR: '))
     return (airline, source, destination, duration, fare)
 
-def create_flight():
+def create_flight(flight):
     query = 'insert into flights(airline, source, destination, duration, fare) values(?, ?, ?, ?, ?)'
     conn = connect_db()
-    flight_details = read_flight_details()
+    #flight = read_flight_details()
+    params = (flight.airline, flight.source, flight.destination, flight.duration, flight.fare)
     cursor = conn.cursor()
-    cursor.execute(query, flight_details)
+    cursor.execute(query, params)
     id = cursor.lastrowid
     conn.commit()
     conn.close()
     return id
 
-def search_flight():
+def search_flight(id):
     query = 'select * from flights where id = ?'
-    id = int(input('Enter id of the flight: '))
+    #id = int(input('Enter id of the flight: '))
     conn = connect_db()
     cursor = conn.cursor()
     cursor.execute(query, (id,))
-    rs = cursor.fetchone()
-    print(str(rs))
-    return rs
+    row = cursor.fetchone()
+    flight = ''
+    if row != None:
+        flight = Flight(id=row[0], airline=row[1], source=row[2], destination=row[3], duration=row[4], fare=row[5])
+        print(flight)
+    else:
+        flight = None
+    return flight
 
 def list_flights():
     query = 'select * from flights'
@@ -69,9 +75,9 @@ def list_flights():
     print(flights)
     return flights
 
-def delete_flight():
+def delete_flight(id):
     query = 'delete from flights where (id=?)'
-    id = int(input('Enter id of the flight to be deleted: '))
+    #id = int(input('Enter id of the flight to be deleted: '))
     params = (id,)
     conn = connect_db()
     cursor = conn.cursor()
@@ -80,11 +86,11 @@ def delete_flight():
     cursor.close()
     conn.close()
 
-def update_flight():
+def update_flight(id):
     query = 'update flights set duration = ?, fare = ? where id = ?'
-    id = int(input('Enter id of the flight to be updated: '))
-    duration = float(input('Enter new duration of the flight: '))
-    fare = float(input('Enter new fare of the flight: '))
+    #id = int(input('Enter id of the flight to be updated: '))
+    #duration = float(input('Enter new duration of the flight: '))
+    #fare = float(input('Enter new fare of the flight: '))
     conn = connect_db()
     cursor = conn.cursor()
     cursor.execute(query, (duration, fare, id))
@@ -107,6 +113,7 @@ def get_menu(choice):
     }
     return menu.get(choice, 'Invalid Choice')
 
+'''
 while True:
     print('1:CreateTable 2:Insert 3:Update 4:Delete 5:Search 6:ListAll 7:Exit')
     choice = int(input('Enter your choice: '))
@@ -114,3 +121,4 @@ while True:
     if my_function == 'Invalid Choice':
         continue
     my_function()
+'''
