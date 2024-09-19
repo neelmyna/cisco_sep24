@@ -1,6 +1,39 @@
-T1:
-
-T2:
-
-T3:
-
+T1: 2
+Francis
+Saumy
+T2: 5
+Saketh
+Sai Krishna
+T3: 5
+Sawdesh
+Akhilesh
+T4: 2
+Prateek
+Tameem
+T5: 4
+Akash
+Harshal
+T6: 6
+SaiKrishna
+Sudheer
+T7: 1
+Shivendra
+Suren
+T8: 4
+Sanjay
+Shreyas
+T9: 6
+Bhagesh
+Pranil
+T10: 1
+Nandan
+Satish
+T11: 2
+Atul
+Gayathri
+T12: 3
+Snigdha
+Amarantha
+T13: 3
+Mrudula
+Srusti
