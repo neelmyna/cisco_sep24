@@ -1,3 +1,4 @@
+import sys
 import sqlite3
 
 class Flight:
@@ -10,7 +11,7 @@ class Flight:
         self.fare = fare
 
     def __str__(self) -> str:
-        return f'{self.airline}, {self.source}, {self.destination}, {self.duration}, {self.fare}'
+        return f'{self.id}, {self.airline}, {self.source}, {self.destination}, {self.duration}, {self.fare}'
 
     def __repr__(self) -> str:
         return self.__str__()
@@ -20,7 +21,7 @@ def connect_db():
     return conn
 
 def create_table_flights():
-    query = 'create table IF NOT EXISTS flights(id int primary key, AUTOINCREMENT, airline varchar(30) not null, source varchar(30) not null, destination varchar(30) not null, duration float, fare int)'
+    query = 'create table IF NOT EXISTS flights(id integer primary key AUTOINCREMENT, airline varchar(30) not null, source varchar(30) not null, destination varchar(30) not null, duration float, fare int)'
     conn = connect_db()
     conn.execute(query)
     conn.close()
@@ -49,7 +50,7 @@ def search_flight():
     id = int(input('Enter id of the flight: '))
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute(query, id)
+    cursor.execute(query, (id,))
     rs = cursor.fetchone()
     print(str(rs))
     return rs
@@ -63,16 +64,18 @@ def list_flights():
     flights = []
     for row in rows:
         flights.append(
-            Flight(id=row[0], airline=row[1], source=row[2], destination=rows[3], duration=row[4],fare=row[5])
+            Flight(id=row[0], airline=row[1], source=row[2], destination=row[3], duration=row[4],fare=row[5])
         )
+    print(flights)
     return flights
 
 def delete_flight():
-    query = 'delete from flights where id = ?'
+    query = 'delete from flights where (id=?)'
     id = int(input('Enter id of the flight to be deleted: '))
+    params = (id,)
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute(query, id)
+    cursor.execute(query, params)
     conn.commit()
     cursor.close()
     conn.close()
@@ -88,3 +91,26 @@ def update_flight():
     conn.commit()
     cursor.close()
     conn.close()
+
+def exit_program():
+    sys.exit('End of App Execution')
+
+def get_menu(choice):
+    menu = {
+        1 : create_table_flights,
+        2 : create_flight,
+        3 : update_flight,
+        4 : delete_flight,
+        5 : search_flight,
+        6 : list_flights,
+        7 : exit_program
+    }
+    return menu.get(choice, 'Invalid Choice')
+
+while True:
+    print('1:CreateTable 2:Insert 3:Update 4:Delete 5:Search 6:ListAll 7:Exit')
+    choice = int(input('Enter your choice: '))
+    my_function = get_menu(choice)
+    if my_function == 'Invalid Choice':
+        continue
+    my_function()
