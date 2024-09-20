@@ -1,8 +1,45 @@
-In Python, built-in functions can be used with classes, instances, and various other objects. Here's a breakdown of some key built-in functions relevant to these types:
+static and class method
+BUILT-IN FUNCTIONS FOR CLASSES AND INSTANCES
+BUILT-IN FUNCTIONS FOR OTHER OBJECTS
+Exception Handling
+Flask
+SubProcess
+request module 
+Weather Report
+SMTP
+FTP
+numpy
+-----------------------------------
+import os
+files = os.listdir('.')
+Returns a list of the names of the entries in the directory given by path.
 
+os.mkdir('new_directory')
+Creates a new directory at the specified path.
+
+os.makedirs('parent/child/grandchild')
+Recursively creates directories, creating all intermediate-level directories needed to contain the leaf directory.
+
+os.rename('old_name.txt', 'new_name.txt')
+Renames the file or directory from src to dst.
+----------------------------------------------------------
+class MyClass:
+    class_var = 0
+    
+    @classmethod
+    def class_method(cls):
+        return cls.class_var
+    
+    @staticmethod
+    def static_method():
+        return f"This is a static method {MyClass.class_var}."
+
+print(MyClass.class_method())  # Output: 0
+print(MyClass.static_method())  # Output: This is a static method.
+----------------------------------
 BUILT-IN FUNCTIONS FOR CLASSES AND INSTANCES
 
-1. type: Returns the type of an object or the type of a new class.
+type: Returns the type of an object or the type of a new class.
    class MyClass:
        pass
 
@@ -12,7 +49,7 @@ BUILT-IN FUNCTIONS FOR CLASSES AND INSTANCES
 2. isinstance(): Checks if an object is an instance of a class or a tuple of classes.
    print(isinstance(obj, MyClass))  # True
 
-3. issubclass(): Checks if a class is a subclass of another class.
+issubclass(): Checks if a class is a subclass of another class.
    class Base:
        pass
 
@@ -21,20 +58,17 @@ BUILT-IN FUNCTIONS FOR CLASSES AND INSTANCES
 
    print(issubclass(Derived, Base))  # True
 
-4. callable(): Checks if an object appears callable (like a function or a class).
-   print(callable(MyClass))  # True
-
-5. dir(): Lists the attributes and methods of an object or class.
+dir(): Lists the attributes and methods of an object or class.
    print(dir(MyClass))  # Lists all attributes/methods of MyClass
 
-6. getattr(): Retrieves an attribute from an object.
+getattr(): Retrieves an attribute from an object.
    print(getattr	(obj, 'non_existent_attribute', 'default_value')) # default_value
 
-7. setattr(): Sets an attribute on an object.
+setattr(): Sets an attribute on an object.
    setattr(obj, 'new_attr', 42)
    print(obj.new_attr)  # 42
 
-8. delattr(): Deletes an attribute from an object.
+delattr(): Deletes an attribute from an object.
    delattr(obj, 'new_attr')
 
 BUILT-IN FUNCTIONS FOR OTHER OBJECTS
@@ -54,3 +88,483 @@ BUILT-IN FUNCTIONS FOR OTHER OBJECTS
 
 5. id(): Returns the unique identifier of an object.
    print(id(obj))  # Unique ID for obj
+-------------------------------------------------------------
+nithin = print('Nithin') # print() returns nothing
+print(nithin) #None
+print(len(nithin))
+#TypeError: object of type 'NoneType' has no len()
+----------------------------------
+num1 = 17
+num2 = 0
+num3 = num1/num2 # Error
+print(num3)
+# ZeroDivisionError: division by zero
+----------------------------
+import math
+root = math.sqrt(-20)
+print(f'Root = {root}')
+# ValueError: math domain error
+
+import math
+try:
+	root = math.sqrt(-20)
+	print(f'Root = {root}')
+except ValueError:
+	print('You gave a wrong Type of value')
+# ValueError: math domain error
+------------------------------
+list1 = [1, 4, 8]
+for i in range(5):
+	print(list1[i])
+# IndexError: list index out of range
+-----------------------------
+AssertionError:
+Raised when the assert statement fails.
+AttributeError:
+Raised on the attribute assignment or reference fails.
+EOFError:
+Raised when the input() function hits the end-of-file condition.
+FloatingPointError:
+Raised when a floating point operation fails.
+GeneratorExit:
+Raised when a generator's close() method is called.
+ImportError:
+Raised when the imported module is not found.
+IndexError:
+Raised when the index of a sequence is out of range.
+KeyError:
+Raised when a key is not found in a dictionary.
+KeyboardInterrupt:
+Raised when the user hits the interrupt key (Ctrl+c or delete).
+MemoryError:
+Raised when an operation runs out of memory.
+NameError:
+Raised when a variable is not found in the local or global scope.
+NotImplementedError:
+Raised by abstract methods.
+OSError:
+Raised when a system operation causes a system-related error.
+OverflowError:
+Raised when the result of an arithmetic operation is too large to be represented.
+ReferenceError:
+Raised when a weak reference proxy is used to access a garbage collected referent.
+RuntimeError:
+Raised when an error does not fall under any other category.
+StopIteration:
+Raised by the next() function to indicate that there is no further item to be returned by the iterator.
+SyntaxError:
+Raised by the parser when a syntax error is encountered.
+IndentationError:
+Raised when there is an incorrect indentation.
+TabError:
+Raised when the indentation consists of inconsistent tabs and spaces.
+SystemError:
+Raised when the interpreter detects internal error.
+SystemExit:
+Raised by the sys.exit() function.
+TypeError:
+Raised when a function or operation is applied to an object of an incorrect type.
+UnboundLocalError:
+Raised when a reference is made to a local variable in a function or method, but no value has been bound to that variable.
+UnicodeError:
+Raised when a Unicode-related encoding or decoding error occurs.
+UnicodeEncodeError:
+Raised when a Unicode-related error occurs during encoding.
+UnicodeDecodeError:
+Raised when a Unicode-related error occurs during decoding.
+UnicodeTranslateError:
+Raised when a Unicode-related error occurs during translation.
+ValueError:
+Raised when a function gets an argument of correct type but improper value.
+ZeroDivisionError:
+Raised when the second operand of a division or module operation is zero.
+
+1.
+a = ["Python", "Exceptions", "try and except"]  
+try:  
+     for i in range(4):  
+        print( "The index and element from the array is", i, a[i] )  
+except:  
+    print ("Index out of range")  
+print ("Out of try catch block")
+--------------------------------------
+2.
+def check(list1, name):
+	try:
+		total = 0
+		for ele in list1:
+			total += int(ele)
+		avg = total // len(list1)
+		pwd = avg + name
+		return int(pwd)
+	except ValueError:
+		print('Value error while check')
+	except TypeError:
+		print('Type error while check')
+	except NameError:
+		print('Name error while check')
+	finally:
+		print('Finally in called function')
+	print('From end of inside of method')
+
+list1 = [10, 20, 30, 40, 50, 60, '7A']
+try:
+	check(list1, 'ABC')
+except NameError:
+	print('Name error in Main')
+finally:
+	print('Finally in Main')
+-----------------------------------------
+3.
+class NonDivisibilityException(Exception):
+	pass
+
+class NonPositiveException(Exception):
+	pass
+
+class CheckStatus:
+	def is_div_by_two(self, list1):
+		try:
+			for value in list1:
+				if value % 2 != 0:
+					raise NonDivisibilityException()
+				if value < 0:
+					raise NonPositiveException()
+			print('Divisible by 2')
+		except NonDivisibilityException:
+			print('Number excetpion - Inside')
+		print('Inside Method')
+
+# Main Code:
+try:
+	CheckStatus().is_div_by_two([3, -8, 12, 4])
+	print('Inside Main')
+except NonDivisibilityException:
+	print('Number exception - Outside')
+except Exception as e:
+	print('Some Error occured')
+finally:
+	print('From Inside Finally of Main')
+print('Program Over')
+--------------------------------------
+4.
+class B(Exception):
+    pass
+
+class C(B):
+    pass
+
+class D(C):
+    pass
+
+for cls in [B, C, D]:
+    try:
+        raise cls()
+    except D:
+        print("D")
+    except C:
+        print("C")
+    except B:
+        print("B")
+-------------------------------------
+try:
+    raise Exception('spam', 'eggs')
+except Exception as inst:
+    print(type(inst))    # the exception instance
+    print(inst.args)     # arguments stored in .args
+    print(inst)          # __str__ allows args to be printed directly,
+                         # but may be overridden in exception subclasses
+    x, y = inst.args     # unpack args
+    print('x =', x)
+    print('y =', y)
+
+<class 'Exception'>
+('spam', 'eggs')
+('spam', 'eggs')
+x = spam
+y = eggs
+--------------------------------------------------------------
+class MyException(ZeroDivisionError):
+    pass
+
+def find_quotient(d, n):
+    if n == 0:
+        raise MyException()
+    return d / n 
+
+try:
+    number = int(input("Enter a number: "))
+    result = find_quotient(10,number)#10 / number
+except ValueError:
+    print("Invalid input! Please enter a valid integer.")
+except MyException:
+    print("You cannot divide by zero!")
+else:
+    print(result)
+finally:
+    print('Cleaning up')
+print('End of program')
+--------------------------------------------------------
+Numpy
+import numpy as np
+
+Numpy Arrays:
+
+arr1 = np.zeros((1, 3)) # Created an Array of 1D (i.e. a single array) of 3 elements, all of which are zeroes. The Array created is nothing but a Python List.
+print(arr1)
+
+arr1 = np.zeros((3, 5)) # 3 rows each of 5 elements and all 15 elements will be zeros.
+print(arr1)
+-----------------
+import numpy as np
+
+To initialize an Array/List of multi dimentional, with all elements Zero:
+
+arr1 = np.zeros((3, 5))
+print(arr1)
+
+print(arr1[2][0]) # 3rd row 1st element
+print(type(arr1[2][0])) #numpy.float64 is nothing but double in C/C++/Java
+-------------
+To initialize an Array with a number other than Zero:
+Method is full()
+
+import numpy as np
+array2 = np.full((1, 5), 15) # Creates a List with a single List. Thus, array2 here, though has single List, it is 2D list.
+print(array2)
+
+print(array2[0]) # Prints the 1st list in the 2D list array2
+print(array2[0][1]) # Prints the 2nd element in the 1st list of array2
+print(array2[1][0]) # Error. There is no 2nd list in array2
+-------------------------------------------
+import numpy as np
+array2 = np.full((3, 2), 5) 
+print(array2)
+print(array2[2][2]) # Error there is no 3rd element in the 3rd row
+print(array2[2][1]) # 5
+---------------------------------------
+To Create numpy array/list with a range of values:
+Method is arange()
+It takes either 1 argument or 2 arguments or 3 arguments
+arange(1, 10) # The range is from 1 to 9. Note that the 2nd Arg is excluded.
+arange(1, 20, 3) # The 3rd Arg depicts the increment for every element in the List
+
+Note: arange() create a 1D List and not 2D list
+
+arr3 = numpy.arange(1, 10)
+arr4 = numpy.arange(1, 20, 4)
+------------------------------
+np.array([[1,2],[3,4]])
+OUT:
+array([[1, 2], [3, 4]])
+-----------------------------------------
+np.zeros((3,1))
+OUT:
+array([[0.],
+       [0.],
+       [0.]])
+---------------------------------------
+You can also initialize an array with ones instead of zeros:
+
+np.ones((3, 1))
+OUT:
+array([[1.],
+       [1.],
+       [1.]])
+--------------------------------------
+np.full() creates an array repeating a fixed value (defaults to zero). Here we create a 2x3 array with the number 7 in each element:
+
+np.full((2,3),7)
+OUT:
+array([[7, 7, 7],
+       [7, 7, 7]])
+
+a = np.full((2,3),7)
+print(a)
+print(type(a))
+print(type(a[0]))
+print(type(a[0][0]))
+--------------------------------------
+Array shape
+All arrays have a shape accessible using .shape
+For example, let's get the shape of a vector, matrix, and tensor.
+
+vector = np.arange(5)
+print('Vector:', vector)
+print("Vector shape:", vector.shape)
+
+matrix = np.ones([3, 2])
+print("Matrix:", matrix
+print("Matrix shape:", matrix.shape)
+
+tensor = np.zeros([2, 3, 3])
+print("Tensor:', tensor)
+print("Tensor shape:", tensor.shape)
+
+print(tensor[0][1][1]) #Prints the 1st Matrix's 2nd Row, 2nd element
+----------------------------------------
+arr = np.arange(1, 10)
+print(arr, '\n')
+
+# Reshape to 3x3 matrix
+arr = arr.reshape(3, 3)
+print(arr, '\n')
+
+# Reshape back to the original size
+arr = arr.reshape(9)
+print(arr)
+----------------------------------------
+import numpy as np
+
+arr1 = np.arange(12)
+
+arr2 = arr1.reshape(2, 6)
+arr3 = arr1.reshape(6, 2)
+arr4 = arr1.reshape(3, 4)
+arr5 = arr1.reshape(12, 1)
+
+print('Arr1:\n', arr1)
+print('Arr2:\n', arr2)
+print('Arr3:\n', arr3)
+print('Arr4:\n', arr4)
+print('Arr5:\n', arr5)
+---------------------
+import numpy as np
+
+arr = np.arange(1, 13)
+print(arr)
+arr = arr.reshape(3, -1)
+print(arr)
+arr = arr.reshape(4, -1)
+print(arr)
+arr = arr.reshape(6, -1)
+print(arr)
+arr = arr.reshape(2, -1)
+print(arr)
+---------------------------------------------------
+Numpy can try to infer one of the dimensions if you use -1. You will still need to have precisely the correct number of digits for the inference to work.
+
+arr = np.arange(1, 10).reshape(3, -1)
+print(arr)
+--------------------------------------------
+import numpy as np
+
+arr1 = np.arange(1, 10)
+arr2 = np.arange(2, 25, 2)
+
+arr3 = arr1.reshape(3, -1)
+arr4 = arr2.reshape(4, -1)
+arr5 = arr2.reshape(2, -1)
+arr6 = arr2.reshape(3, -1)
+
+arr7 = arr2.reshape(-1, 4) # Numpy predicts and fixes the number of rows
+
+print('Arr1:\n', arr1)
+print('Arr2:\n', arr2)
+print('Arr3:\n', arr3)
+print('Arr4:\n', arr4)
+print('Arr5:\n', arr5)
+print('Arr6:\n', arr6)
+print('Arr6:\n', arr7)
+-----------------------------------------
+inputNum = int(input("Enter a number to find sum of its digits: "))
+
+temp = inputNum
+sumOfDigits = 0
+
+while temp != 0:
+	remainderDigit = temp % 10
+	sumOfDigits = sumOfDigits + remainderDigit
+	temp = temp // 10 #integer division is important
+
+print(f'Sum of the digits of {inputNum} is {sumOfDigits}')
+--------------------------------------------
+In Python, passing the primitive values is always done using CALL BY VALUE
+def func(num):
+	print("num from func before changing its value = ", num)
+	num = 50
+	print("num from func after changing its value = ", num)
+
+#Note, once the func() ends, the local variable 'num' is deleted. And it is also accessible only inside func()
+
+num = 5
+print("num from main before changing its value = ", num)
+func(num) # Call by value (We are passing a COPY of num to the function func() )
+print("num from main after function call = ", num)
+# Here we observe that the modified value in CALLED FUNCTION is not updated in calling function
+num = 25
+print("num from main after changing its value = ", num)
+----------------------------------------------------------------
+def func(list1): # We have received the reference value of the list object
+	print("num from func before changing its value = ", list1)
+	list1.remove(1.1)
+	print("num from func after changing its value = ", list1)
+
+numbers = [2.5, 3.3, 5.5, 1.1]
+print("List from main before changing its value = ", numbers)
+func(numbers) # Call by Reference (We are passing the reference value of the List Object and not the object itself)
+print("List from main after function call = ", numbers)
+numbers.insert(3, 30.3)
+print("List from main after changing its value = ", numbers)
+---------------------------------------
+fo = open("D:\\Python Programs\\practice\\textfile1.txt", "r")
+#opening a file in read mode
+print ("Name of the file: ", fo.name)#printing the printing file 
+print ("File Closed ? : ", fo.closed) #returns truth value
+print ("Opening mode : ", fo.mode) # file opening mode
+fo.close() # saves the file on the disk
+print ("File Closed? : ", fo.closed)
+----------------------------------------------------
+import pickle
+
+class Student:
+
+	def __init__(self):
+		self.name = ""
+		self.marks = 0
+		self.sem = 0
+		self.branch = ""
+
+	def __init__(self, name, marks, sem, branch):
+		self.name = name
+		self.marks = marks
+		self.sem = sem
+		self.branch = branch
+
+stud1 = Student('Raam', 95, 7, 'ECE')
+
+fo = open("file1.pkl", "ab")
+pickle.dump(stud1, fo, pickle.HIGHEST_PROTOCOL)
+print("Writing to the file Over")
+fo.close()
+
+print("Reading Object from the file:")
+with open('file1.pkl', 'rb') as inputFilePtr:
+	stud1 = pickle.load(inputFilePtr)
+	print('Student Name:  ' + stud1.name)
+	print('Student Marks: ' + str(stud1.marks))
+	print('Student Sem:   ' + str(stud1.sem))
+	print('Student Branch:' + stud1.branch)
+----------------------------------------------------
+#https://stackoverflow.com/questions/72480454/sending-email-with-python-google-disables-less-secure-apps
+
+'''
+To send mail 
+    enable in gmail the 2 step verification 
+Then 
+    use below link to create app password
+    with app password and your mail id try to run the below code
+
+    #https://support.google.com/accounts/answer/185833?hl=en
+'''
+
+import smtplib as smtp
+
+connection = smtp.SMTP_SSL('smtp.gmail.com', 465)
+    
+email_addr = 'pystud19@gmail.com'
+email_passwd = 'yaxb hoco fihc prnn'
+connection.login(email_addr, email_passwd)
+connection.sendmail(from_addr=email_addr, to_addrs='gmaheswaranmca@gmail.com', msg="Sent from my IDE. Hehe")
+connection.close()
+print('Mail sent successfully')
