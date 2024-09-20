@@ -4,9 +4,12 @@ to interact with a Telnet server.
 that provides Telnet client functionality. 
 Here's a basic example of how to use it:
 
-Example: Basic Telnet Client
 
-```python
+'''
+import pymysql
+conn = pymysql.Connect(host='localhost', port=3306, username='root', password='root123', database='nithin_db', charset='utf8')
+'''
+Example: Basic Telnet Client
 import telnetlib
 
 # Define the host and port
@@ -43,7 +46,6 @@ print(response)
 
 # Close the Telnet connection
 tn.close()
-```
 
 Key Points: 
 - Connecting: 
@@ -72,7 +74,3 @@ Notes:
     The example does not include error handling. 
     In a real application, 
     you should handle exceptions and errors properly.
-
-If you have specific requirements or 
-need to perform more advanced Telnet operations, 
-let me know!
