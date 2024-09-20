@@ -3,7 +3,7 @@ import numpy as np
 
 data = [] # Normal or ordinary list
 
-with open('fruits.csv', 'r') as csvfile:
+with open('fruits_csv.csv', 'r') as csvfile:
     file_reader = csv.reader(csvfile, delimiter = ',')
     for row in file_reader:
         data.append(row)

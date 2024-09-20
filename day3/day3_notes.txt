@@ -157,4 +157,3 @@ print(f'Squared Numbers = {squared_numbers}')
 print(f'Single Digit Numbers = {small_numbers}')
 print(f'Sum of Numbers = {numbers_sum}')
 ------------------------------------------
-https://tinyurl.com/cisco-test1
